@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <div id=wrapper>
+    <header>
+      <a class=navLink href="/logout">Log Out</a>
+      <a class=navLink href="/recipes/create">Create</a>
+      <h1 class=head>Welcome, {{current_user.first_name}}</h1>
+      <h2 id=subHead>All Posted Recipes: </h2>
+    </header>
+    <div id="displayTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Under</th>
+            <th>Posted By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in all_users %}
+          <tr>
+            <td class="tableData">{{user.recipe_name}}</td>
+            <td class="tableData">{{user.min_30}}</td>
+            <td class="tableData">{{user.first_name}}</td>
+            <td class="tableData">
+              <a class=navLink href="">View Recipe</a>
+              <a class=navLink href="/recipes/edit/">Edit</a>
+              <a class=navLink href="">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

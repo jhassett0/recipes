@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit a Recipe!</title>
+</head>
+
+<body>
+  <a class=navLink href="/recipes">Back to Recipes</a>
+  <a class=navLink href="/logout">Log Out</a>
+  <h1 id="head"> Edit Page</h1>
+  <form action='/recipes/edit/' method='post' ?>
+    <h2>Recipe Name:</h2>
+    <textarea name="content"></textarea>
+    <h3>Description:</h3>
+    <textarea name="content"></textarea>
+    <h3>Instructions:</h3>
+    <textarea name="content"></textarea>
+    <label for="start">Date Cooked/Made:</label>
+    <input type="date" id="start" name="trip-start">
+    <p>Under 30 Minutes?</p>
+    <input type="radio" id="yes" name="30_min" value="yes">
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="30_min" value="no">
+    <label for="no">No</label><br>
+    <a href="/recipes" class="btn btn-primary">Publish</a>
+  </form>
+</body>
+
+</html>

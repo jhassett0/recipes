@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a New Recipe!</title>
+</head>
+
+<body>
+  <div id="displayTable">
+    <a class=navLink href="/recipes">Back to Recipes</a>
+    <a class=navLink href="/logout">Log Out</a>
+    <h3>Add a New Recipe!</h3>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p class=error>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/post/create" method="POST">
+      <h4>Recipe Name:</h4>
+      <textarea name="content"></textarea>
+      <h4>Description:</h4>
+      <textarea name="content"></textarea>
+      <h4>Instructions:</h4>
+      <textarea name="content"></textarea>
+      <label for="start">Date Cooked/Made:</label>
+      <input type="date" id="start" name="trip-start">
+      <p>Under 30 Minutes?</p>
+      <input type="radio" id="yes" name="30_min" value="yes">
+      <label for="yes">Yes</label><br>
+      <input type="radio" id="no" name="30_min" value="no">
+      <label for="no">No</label><br>
+      <a href="/recipes" class="btn btn-primary">Publish</a>
+    </form>
+  </div>
+  <div id="displayTable">
+
+    {% for post in all_posts %}
+    <h3>{{post.creator}} - {{post.created_at.strftime("%B %-d")}}</h3>
+    <p> {{post.content}} </p>
+    {% if current_user.id == post.user_id %}
+    <a href="/post/delete/{{post.id}}"> Delete</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</body>
+
+</html>
